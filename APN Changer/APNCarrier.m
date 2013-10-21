@@ -26,6 +26,8 @@
     xml = [templateXML stringByReplacingOccurrencesOfString:@"$$CARRIERDESC$$" withString:self.carrierDescription];
     xml = [xml stringByReplacingOccurrencesOfString:@"$$CARRIERNAME$$" withString:self.carrierName];
     xml = [xml stringByReplacingOccurrencesOfString:@"$$APN$$" withString:self.carrierAPN];
+    xml = [xml stringByReplacingOccurrencesOfString:@"$$UUID1$$" withString:[[NSUUID UUID] UUIDString]];
+    xml = [xml stringByReplacingOccurrencesOfString:@"$$UUID2$$" withString:[[NSUUID UUID] UUIDString]];
     
     return xml;
 }
