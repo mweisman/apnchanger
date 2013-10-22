@@ -15,6 +15,7 @@
 @interface APNSelectViewController () {
     NSMutableArray *_carriers;
     APNChangerServer *_server;
+    APNCarrier *_selectedCarrier;
 }
 @end
 
@@ -101,14 +102,11 @@
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     selectedCell.selected = NO;
     
-    _server = [APNChangerServer sharedServer];
-    [_server startServer];
+    _selectedCarrier = _carriers[indexPath.row];
     
-    APNCarrier *theCarrier = _carriers[indexPath.row];
-    NSURL *carrierURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/apns/apn.mobileconfig", _server.port]];
-    [_server serveXMLString:theCarrier.carrierXML];
+    UIActionSheet *whatToDoSheet = [[UIActionSheet alloc] initWithTitle:@"Open or Share APN Settings?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Install", @"Share", nil];
     
-    [[UIApplication sharedApplication] openURL:carrierURL];
+    [whatToDoSheet showInView:self.view];
 }
 
 
@@ -134,6 +132,39 @@
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        // Install
+        _server = [APNChangerServer sharedServer];
+        [_server startServer];
+        NSURL *carrierURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/apns/apn.mobileconfig", _server.port]];
+        [_server serveXMLString:_selectedCarrier.carrierXML];
+        
+        [[UIApplication sharedApplication] openURL:carrierURL];
+    } else {
+        // Share
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[NSString stringWithFormat:@"%@ carrier settings",_selectedCarrier.carrierName], [self packageMobileConfigWithXML:_selectedCarrier.carrierXML forCarrier:_selectedCarrier.carrierName]] applicationActivities:nil];
+        activityVC.excludedActivityTypes = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter, UIActivityTypePostToWeibo, UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr, UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo];
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }
+}
+
+- (NSURL *)packageMobileConfigWithXML:(NSString *)carrierXML forCarrier:(NSString *)carrierName
+{
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
+    NSString *filePath = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mobileconfig", carrierName]];
+    
+    NSError *error;
+    [carrierXML writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    
+    if (error) {
+        return nil;
+    }
+    
+    return [NSURL fileURLWithPath:filePath];
 }
 
 @end

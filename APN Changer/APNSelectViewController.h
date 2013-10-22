@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface APNSelectViewController : UITableViewController <UITableViewDataSource>
+@interface APNSelectViewController : UITableViewController <UITableViewDataSource, UIActionSheetDelegate>
 
 @end
