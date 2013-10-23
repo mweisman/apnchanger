@@ -14,7 +14,6 @@
 
 @interface APNSelectViewController () {
     NSMutableArray *_carriers;
-    APNCarrier *_selectedCarrier;
 }
 @end
 
@@ -85,21 +84,10 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    APNViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"APNView"];
-    vc.carrier = _carriers[indexPath.row];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     selectedCell.selected = NO;
-    
-    _selectedCarrier = _carriers[indexPath.row];
     
     UIActionSheet *whatToDoSheet = [[UIActionSheet alloc] initWithTitle:@"Open or Share APN Settings?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Install", @"Share", nil];
     
@@ -133,17 +121,20 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    APNCarrier *carrier = _carriers[indexPath.row];
+    
     if (buttonIndex == 0) {
         // Install
         APNChangerServer *server = [APNChangerServer sharedServer];
         [server startServer];
         NSURL *carrierURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/apns/apn.mobileconfig", server.port]];
-        [server serveXMLString:_selectedCarrier.carrierXML];
+        [server serveXMLString:carrier.carrierXML];
         
         [[UIApplication sharedApplication] openURL:carrierURL];
     } else {
         // Share
-        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[NSString stringWithFormat:@"%@ carrier settings",_selectedCarrier.carrierName], [self packageMobileConfigWithXML:_selectedCarrier.carrierXML forCarrier:_selectedCarrier.carrierName]] applicationActivities:nil];
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[NSString stringWithFormat:@"%@ carrier settings",carrier.carrierName], [self packageMobileConfigWithXML:carrier.carrierXML forCarrier:carrier.carrierName]] applicationActivities:nil];
         activityVC.excludedActivityTypes = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter, UIActivityTypePostToWeibo, UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr, UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo];
         [self presentViewController:activityVC animated:YES completion:nil];
     }
@@ -162,6 +153,22 @@
     }
     
     return [NSURL fileURLWithPath:filePath];
+}
+
+#pragma mark - navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    APNCarrier *carrier = _carriers[indexPath.row];
+    
+    UINavigationController *nc = [segue destinationViewController];
+    APNViewController *vc = nc.viewControllers[0];
+    vc.carrier = carrier;
+}
+
+- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    NSLog(@"Hello");
 }
 
 @end
