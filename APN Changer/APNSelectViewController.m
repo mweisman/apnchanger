@@ -160,7 +160,6 @@
 {
     if ([segue.identifier isEqualToString:@"showAPNSettings"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         APNCarrier *carrier = _carriers[indexPath.row];
         
         
