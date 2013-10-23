@@ -18,16 +18,16 @@ RoutingHTTPServer *_webServer;
     static id sharedServer;
     dispatch_once(&once, ^{
         sharedServer = [[self alloc] init];
+        _webServer = [[RoutingHTTPServer alloc] init];
+        [_webServer setDefaultHeader:@"Server" value:@"APNChanger/1.0"];
+        _webServer.port = 8888;
+        _webServer.type = @"_http._tcp.";
     });
     return sharedServer;
 }
 
 - (void) startServer
 {
-    _webServer = [[RoutingHTTPServer alloc] init];
-    [_webServer setDefaultHeader:@"Server" value:@"APNChanger/1.0"];
-	_webServer.type = @"_http._tcp.";
-    
 	NSError *error;
 	if(![_webServer start:&error]) {
 		NSLog(@"Error starting HTTP Server: %@", error);

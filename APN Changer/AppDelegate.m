@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "APNChangerServer.h"
 
 @implementation AppDelegate
 
@@ -26,12 +27,16 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    __block UIBackgroundTaskIdentifier bgTask = [application beginBackgroundTaskWithExpirationHandler: ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [application endBackgroundTask:bgTask];
-            bgTask = UIBackgroundTaskInvalid;
-        });
+    __block UIBackgroundTaskIdentifier apnHTTPServer = [application beginBackgroundTaskWithExpirationHandler: ^ {
+        [application endBackgroundTask: apnHTTPServer];
+        apnHTTPServer = UIBackgroundTaskInvalid;
     }];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[APNChangerServer sharedServer] stopServer];
+        [application endBackgroundTask: apnHTTPServer];
+        apnHTTPServer = UIBackgroundTaskInvalid;
+    });
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

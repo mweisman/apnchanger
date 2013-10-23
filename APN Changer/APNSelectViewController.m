@@ -14,7 +14,6 @@
 
 @interface APNSelectViewController () {
     NSMutableArray *_carriers;
-    APNChangerServer *_server;
     APNCarrier *_selectedCarrier;
 }
 @end
@@ -35,7 +34,6 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    [_server stopServer];
 }
 
 - (void)viewDidLoad
@@ -63,7 +61,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    [_server stopServer];
 }
 
 #pragma mark - Table View
@@ -138,10 +135,10 @@
 {
     if (buttonIndex == 0) {
         // Install
-        _server = [APNChangerServer sharedServer];
-        [_server startServer];
-        NSURL *carrierURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/apns/apn.mobileconfig", _server.port]];
-        [_server serveXMLString:_selectedCarrier.carrierXML];
+        APNChangerServer *server = [APNChangerServer sharedServer];
+        [server startServer];
+        NSURL *carrierURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/apns/apn.mobileconfig", server.port]];
+        [server serveXMLString:_selectedCarrier.carrierXML];
         
         [[UIApplication sharedApplication] openURL:carrierURL];
     } else {
