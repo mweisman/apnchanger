@@ -75,9 +75,9 @@
     return YES;
 }
 
--(void)textFieldDidChange :(UITextField *)theTextField
+-(void)textFieldDidChange :(UITextField *)textField
 {
-    if ([_carrierName.text length] > 0 && [_carrierDescription.text length] > 0 && [_apn.text length] > 0) {
+    if ([_carrierName.text length] > 0 && [_apn.text length] > 0) {
         _saveButton.enabled = YES;
     }
 }
@@ -88,6 +88,7 @@
     } else if (textField == _carrierDescription) {
         [_apn becomeFirstResponder];
     } else if (textField == _apn) {
+        [self saveCarrier:nil];
         [textField resignFirstResponder];
     }
     return YES;
