@@ -33,6 +33,7 @@
     }];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        sleep(5);
         [[APNChangerServer sharedServer] stopServer];
         [application endBackgroundTask: apnHTTPServer];
         apnHTTPServer = UIBackgroundTaskInvalid;
