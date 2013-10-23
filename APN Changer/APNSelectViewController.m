@@ -132,7 +132,7 @@
         [server serveXMLString:carrier.carrierXML];
         
         [[UIApplication sharedApplication] openURL:carrierURL];
-    } else {
+    } else if (buttonIndex == 1) {
         // Share
         UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[NSString stringWithFormat:@"%@ carrier settings",carrier.carrierName], [self packageMobileConfigWithXML:carrier.carrierXML forCarrier:carrier.carrierName]] applicationActivities:nil];
         activityVC.excludedActivityTypes = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter, UIActivityTypePostToWeibo, UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr, UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo];
@@ -158,17 +158,15 @@
 #pragma mark - navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    APNCarrier *carrier = _carriers[indexPath.row];
-    
-    UINavigationController *nc = [segue destinationViewController];
-    APNViewController *vc = nc.viewControllers[0];
-    vc.carrier = carrier;
-}
-
-- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-    NSLog(@"Hello");
+    if ([segue.identifier isEqualToString:@"showAPNSettings"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        APNCarrier *carrier = _carriers[indexPath.row];
+        
+        
+        UINavigationController *nc = [segue destinationViewController];
+        APNViewController *vc = nc.viewControllers[0];
+        vc.carrier = carrier;
+    }
 }
 
 @end
