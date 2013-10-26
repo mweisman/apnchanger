@@ -14,7 +14,6 @@
 
 @interface APNSelectViewController () {
     NSMutableArray *_carriers;
-    APNCarrier *_selectedCarrier;
 }
 @end
 
@@ -89,7 +88,6 @@
 {
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     selectedCell.selected = NO;
-    _selectedCarrier = _carriers[indexPath.row];
     
     UIActionSheet *whatToDoSheet = [[UIActionSheet alloc] initWithTitle:@"Open or Share APN Settings?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Install", @"Share", nil];
     
@@ -162,6 +160,7 @@
 {
     if ([segue.identifier isEqualToString:@"showAPNSettings"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         APNCarrier *carrier = _carriers[indexPath.row];
         
         
