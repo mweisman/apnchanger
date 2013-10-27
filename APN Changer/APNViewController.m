@@ -21,14 +21,14 @@
 
     if (!_carrier) {
         self.navigationItem.title = @"New Carrier";
-
     } else {
         self.navigationItem.title = _carrier.carrierName;
         _carrierDescription.text = _carrier.carrierDescription;
         _carrierName.text = _carrier.carrierName;
         _apn.text = _carrier.carrierAPN;
+        _username.text = _carrier.apnUsername;
+        _password.text = _carrier.apnPassword;
     }
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,6 +53,8 @@
     carrierAPN.carrierName = _carrierName.text;
     carrierAPN.carrierDescription = _carrierDescription.text;
     carrierAPN.carrierAPN = _apn.text;
+    carrierAPN.apnUsername = _username.text;
+    carrierAPN.apnPassword = _password.text;
     
     NSError *error;
     if (![cd.managedObjectContext save:&error]) {
@@ -88,9 +90,15 @@
     } else if (textField == _carrierDescription) {
         [_apn becomeFirstResponder];
     } else if (textField == _apn) {
+        [_username becomeFirstResponder];
+    } else if (textField == _username) {
+        _password.secureTextEntry = YES;
+        [_password becomeFirstResponder];
+    } else if (textField == _password) {
         [self saveCarrier:nil];
         [textField resignFirstResponder];
     }
+    
     return YES;
 }
 

@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *carrierName;
 @property (weak, nonatomic) IBOutlet UITextField *carrierDescription;
 @property (weak, nonatomic) IBOutlet UITextField *apn;
+@property (weak, nonatomic) IBOutlet UITextField *username;
+@property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 - (IBAction) saveCarrier:(id)sender;

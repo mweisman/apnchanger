@@ -15,6 +15,8 @@
 @property (nonatomic, retain) NSString * carrierName;
 @property (nonatomic, retain) NSString * carrierDescription;
 @property (nonatomic, retain) NSString * carrierAPN;
+@property (nonatomic, retain) NSString * apnUsername;
+@property (nonatomic, retain) NSString * apnPassword;
 @property (nonatomic, readonly) NSString *carrierXML;
 
 @end
