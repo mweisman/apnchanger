@@ -39,8 +39,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     [self fetchCarriers];
     
     if (_carriers.count == 0) {
