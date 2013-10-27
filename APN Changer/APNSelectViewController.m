@@ -42,10 +42,7 @@
     [self fetchCarriers];
     
     if (_carriers.count == 0) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        APNViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"APNView"];
-        
-        [self.navigationController pushViewController:vc animated:YES];
+        [self performSegueWithIdentifier:@"addAPN" sender:nil];
     }
 }
 
@@ -158,7 +155,6 @@
 {
     if ([segue.identifier isEqualToString:@"showAPNSettings"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         APNCarrier *carrier = _carriers[indexPath.row];
         
         
