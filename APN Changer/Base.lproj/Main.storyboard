@@ -53,6 +53,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.44963304924242425" blue="0.039215687662363052" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <segue destination="RIE-Wt-8up" kind="modal" identifier="showAPNSettings" trigger="accessoryAction" id="8Fx-Az-cj9"/>
                                 </connections>
