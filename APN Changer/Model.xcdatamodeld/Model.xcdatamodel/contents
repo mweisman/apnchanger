@@ -6,6 +6,8 @@
         <attribute name="carrierAPN" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="carrierDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="carrierName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isBuiltIn" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <elements>
         <element name="APNCarrier" positionX="0" positionY="0" width="0" height="0"/>

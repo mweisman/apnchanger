@@ -16,6 +16,8 @@
 @dynamic carrierAPN;
 @dynamic apnUsername;
 @dynamic apnPassword;
+@dynamic country;
+@dynamic isBuiltIn;
 
 - (NSString *) carrierXML
 {
