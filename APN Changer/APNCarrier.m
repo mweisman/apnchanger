@@ -28,6 +28,14 @@
     xml = [templateXML stringByReplacingOccurrencesOfString:@"$$CARRIERDESC$$" withString:self.carrierDescription];
     xml = [xml stringByReplacingOccurrencesOfString:@"$$CARRIERNAME$$" withString:self.carrierName];
     xml = [xml stringByReplacingOccurrencesOfString:@"$$APN$$" withString:self.carrierAPN];
+    if (self.apnUsername) {
+        NSString *userXML = [NSString stringWithFormat:@"<key>username</key><string>%@</string>",self.apnUsername];
+        xml = [xml stringByReplacingOccurrencesOfString:@"$$USER$$" withString:userXML];
+    }
+    if (self.apnPassword) {
+        NSString *userXML = [NSString stringWithFormat:@"<key>password</key><string>%@</string>",self.apnPassword];
+        xml = [xml stringByReplacingOccurrencesOfString:@"$$PASS$$" withString:userXML];
+    }
     xml = [xml stringByReplacingOccurrencesOfString:@"$$UUID1$$" withString:[[NSUUID UUID] UUIDString]];
     xml = [xml stringByReplacingOccurrencesOfString:@"$$UUID2$$" withString:[[NSUUID UUID] UUIDString]];
     

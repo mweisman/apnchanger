@@ -15,8 +15,10 @@
                                 <dict>
                                     <key>apn</key>
                                     <string>$$APN$$</string>
+                                    $$PASS$$
                                     <key>proxyPort</key>
                                     <integer>0</integer>
+                                    $$USER$$
                                 </dict>
                             </array>
                         </dict>
