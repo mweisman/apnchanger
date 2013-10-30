@@ -16,6 +16,6 @@
 + (APNChangerServer *)sharedServer;
 - (void) stopServer;
 - (void) startServer;
-- (void) serveXMLString:(NSString *)carrierXML;
+- (void) serveXMLString:(NSString *)carrierXML forCarrier:(NSString *)carrierName;
 
 @end

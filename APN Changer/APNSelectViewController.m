@@ -14,6 +14,7 @@
 
 @interface APNSelectViewController () {
     NSMutableArray *_carriers;
+    APNCarrier *_selectedCarrier;
 }
 @end
 
@@ -83,6 +84,7 @@
 {
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     selectedCell.selected = NO;
+    _selectedCarrier = _carriers[indexPath.row];
     
     UIActionSheet *whatToDoSheet = [[UIActionSheet alloc] initWithTitle:@"Open or Share APN Settings?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Install", @"Share", nil];
     
@@ -116,20 +118,19 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    APNCarrier *carrier = _carriers[indexPath.row];
     
     if (buttonIndex == 0) {
         // Install
         APNChangerServer *server = [APNChangerServer sharedServer];
         [server startServer];
-        NSURL *carrierURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/apns/apn.mobileconfig", server.port]];
-        [server serveXMLString:carrier.carrierXML];
+        int carrierID = rand();
+        NSURL *carrierURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/apns/%d.mobileconfig", server.port, carrierID]];
+        [server serveXMLString:_selectedCarrier.carrierXML forCarrier:[NSString stringWithFormat:@"%d", carrierID]];
         
         [[UIApplication sharedApplication] openURL:carrierURL];
     } else if (buttonIndex == 1) {
         // Share
-        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[NSString stringWithFormat:@"%@ carrier settings",carrier.carrierName], [self packageMobileConfigWithXML:carrier.carrierXML forCarrier:carrier.carrierName]] applicationActivities:nil];
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[NSString stringWithFormat:@"%@ carrier settings",_selectedCarrier.carrierName], [self packageMobileConfigWithXML:_selectedCarrier.carrierXML forCarrier:_selectedCarrier.carrierName]] applicationActivities:nil];
         activityVC.excludedActivityTypes = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter, UIActivityTypePostToWeibo, UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr, UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo];
         [self presentViewController:activityVC animated:YES completion:nil];
     }
