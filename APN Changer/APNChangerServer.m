@@ -47,7 +47,7 @@ RoutingHTTPServer *_webServer;
 
 - (void) serveXMLString:(NSString *)carrierXML forCarrier:(NSString *)carrierName
 {
-    [_webServer handleMethod:@"GET" withPath:[NSString stringWithFormat:@"/apns/%@.mobileconfig", carrierName]block:^(RouteRequest *request, RouteResponse *response) {
+    [_webServer handleMethod:@"GET" withPath:[NSString stringWithFormat:@"/apns/%@.mobileconfig", carrierName] block:^(RouteRequest *request, RouteResponse *response) {
         [response setHeader:@"Content-Type" value:@"application/x-apple-aspen-config"];
         [response respondWithString:carrierXML];
     }];
