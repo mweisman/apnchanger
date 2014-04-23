@@ -7,6 +7,7 @@
 //
 
 #import "APNChangerServer.h"
+#import "APNSigner.h"
 
 @implementation APNChangerServer
 
@@ -49,7 +50,7 @@ RoutingHTTPServer *_webServer;
 {
     [_webServer handleMethod:@"GET" withPath:[NSString stringWithFormat:@"/apns/%@.mobileconfig", carrierName] block:^(RouteRequest *request, RouteResponse *response) {
         [response setHeader:@"Content-Type" value:@"application/x-apple-aspen-config"];
-        [response respondWithString:carrierXML];
+        [response respondWithData:[APNSigner signMobileconfig:carrierXML]];
     }];
 }
 

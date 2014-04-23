@@ -47,6 +47,8 @@
 		8B003BCD181324A40037CAB7 /* RouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B003BC5181324A40037CAB7 /* RouteResponse.m */; };
 		8B003BCE181324A40037CAB7 /* RoutingConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B003BC7181324A40037CAB7 /* RoutingConnection.m */; };
 		8B003BCF181324A40037CAB7 /* RoutingHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B003BC9181324A40037CAB7 /* RoutingHTTPServer.m */; };
+		8B2D149E19088A2600E047C4 /* cert.crt in Resources */ = {isa = PBXBuildFile; fileRef = 8B2D149C19088A2600E047C4 /* cert.crt */; };
+		8B2D149F19088A2600E047C4 /* key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8B2D149D19088A2600E047C4 /* key.pem */; };
 		8B5FCCA21813A76400BE8F5D /* APNChangerServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5FCCA11813A76400BE8F5D /* APNChangerServer.m */; };
 		8B5FCCA718145C0600BE8F5D /* template.mobileconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8B5FCCA618145C0600BE8F5D /* template.mobileconfig */; };
 		8B5FCCA918145FCF00BE8F5D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5FCCA818145FCF00BE8F5D /* CoreData.framework */; };
@@ -54,6 +56,8 @@
 		8B5FCCAF1814604700BE8F5D /* APNCarrier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5FCCAE1814604700BE8F5D /* APNCarrier.m */; };
 		8B5FCCB2181460EC00BE8F5D /* CoreDataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5FCCB1181460EC00BE8F5D /* CoreDataAccess.m */; };
 		8B5FCCBB18149B1800BE8F5D /* APNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5FCCBA18149B1800BE8F5D /* APNViewController.m */; };
+		8B61ECB519060D8E00201CDF /* APNSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B61ECB419060D8E00201CDF /* APNSigner.m */; };
+		8B61ECB8190634C800201CDF /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B61ECB6190634C800201CDF /* libcrypto.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +144,8 @@
 		8B003BC8181324A40037CAB7 /* RoutingHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoutingHTTPServer.h; path = "APN Changer/externals/RoutingHTTPServer/Source/RoutingHTTPServer.h"; sourceTree = "<group>"; };
 		8B003BC9181324A40037CAB7 /* RoutingHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoutingHTTPServer.m; path = "APN Changer/externals/RoutingHTTPServer/Source/RoutingHTTPServer.m"; sourceTree = "<group>"; };
 		8B0DA5FF181397F400F1B07B /* APN Changer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "APN Changer.entitlements"; sourceTree = "<group>"; };
+		8B2D149C19088A2600E047C4 /* cert.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cert.crt; sourceTree = "<group>"; };
+		8B2D149D19088A2600E047C4 /* key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = key.pem; sourceTree = "<group>"; };
 		8B5FCCA01813A76400BE8F5D /* APNChangerServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNChangerServer.h; sourceTree = "<group>"; };
 		8B5FCCA11813A76400BE8F5D /* APNChangerServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNChangerServer.m; sourceTree = "<group>"; };
 		8B5FCCA618145C0600BE8F5D /* template.mobileconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = template.mobileconfig; sourceTree = "<group>"; };
@@ -151,6 +157,9 @@
 		8B5FCCB1181460EC00BE8F5D /* CoreDataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataAccess.m; sourceTree = "<group>"; };
 		8B5FCCB918149B1800BE8F5D /* APNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNViewController.h; sourceTree = "<group>"; };
 		8B5FCCBA18149B1800BE8F5D /* APNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNViewController.m; sourceTree = "<group>"; };
+		8B61ECB319060D8E00201CDF /* APNSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APNSigner.h; path = "APN Changer/APNSigner.h"; sourceTree = "<group>"; };
+		8B61ECB419060D8E00201CDF /* APNSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APNSigner.m; path = "APN Changer/APNSigner.m"; sourceTree = "<group>"; };
+		8B61ECB6190634C800201CDF /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = openssl/lib/libcrypto.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B5FCCA918145FCF00BE8F5D /* CoreData.framework in Frameworks */,
+				8B61ECB8190634C800201CDF /* libcrypto.a in Frameworks */,
 				8B00392118131ABE0037CAB7 /* CoreGraphics.framework in Frameworks */,
 				8B00392318131ABE0037CAB7 /* UIKit.framework in Frameworks */,
 				8B00391F18131ABE0037CAB7 /* Foundation.framework in Frameworks */,
@@ -171,6 +181,8 @@
 		8B00391218131ABE0037CAB7 = {
 			isa = PBXGroup;
 			children = (
+				8B61ECB319060D8E00201CDF /* APNSigner.h */,
+				8B61ECB419060D8E00201CDF /* APNSigner.m */,
 				8B00392418131ABE0037CAB7 /* APN Changer */,
 				8B00391D18131ABE0037CAB7 /* Frameworks */,
 				8B00391C18131ABE0037CAB7 /* Products */,
@@ -188,6 +200,7 @@
 		8B00391D18131ABE0037CAB7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B61ECB6190634C800201CDF /* libcrypto.a */,
 				8B5FCCA818145FCF00BE8F5D /* CoreData.framework */,
 				8B003BBD181324960037CAB7 /* RoutingHTTPServer */,
 				8B003B4A18131F1B0037CAB7 /* CocoaHTTPServer */,
@@ -226,6 +239,7 @@
 		8B00392518131ABE0037CAB7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8B61ECBA1908095100201CDF /* keys */,
 				8B5FCCA618145C0600BE8F5D /* template.mobileconfig */,
 				8B00392618131ABE0037CAB7 /* APN Changer-Info.plist */,
 				8B00392718131ABE0037CAB7 /* InfoPlist.strings */,
@@ -375,6 +389,15 @@
 			name = RoutingHTTPServer;
 			sourceTree = "<group>";
 		};
+		8B61ECBA1908095100201CDF /* keys */ = {
+			isa = PBXGroup;
+			children = (
+				8B2D149C19088A2600E047C4 /* cert.crt */,
+				8B2D149D19088A2600E047C4 /* key.pem */,
+			);
+			name = keys;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -447,10 +470,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B2D149F19088A2600E047C4 /* key.pem in Resources */,
 				8B00393A18131ABE0037CAB7 /* Images.xcassets in Resources */,
 				8B00392918131ABE0037CAB7 /* InfoPlist.strings in Resources */,
 				8B00393218131ABE0037CAB7 /* Main.storyboard in Resources */,
 				8B5FCCA718145C0600BE8F5D /* template.mobileconfig in Resources */,
+				8B2D149E19088A2600E047C4 /* cert.crt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +523,7 @@
 				8B003BAD18131F360037CAB7 /* DDFileLogger.m in Sources */,
 				8B003B8C18131F2D0037CAB7 /* HTTPRedirectResponse.m in Sources */,
 				8B003BAF18131F360037CAB7 /* DDTTYLogger.m in Sources */,
+				8B61ECB519060D8E00201CDF /* APNSigner.m in Sources */,
 				8B003BCE181324A40037CAB7 /* RoutingConnection.m in Sources */,
 				8B003B8018131F2D0037CAB7 /* HTTPAuthenticationRequest.m in Sources */,
 			);
@@ -559,6 +585,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/openssl/include",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -593,6 +624,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/openssl/include",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -609,6 +645,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "APN Changer/APN Changer-Prefix.pch";
 				INFOPLIST_FILE = "APN Changer/APN Changer-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/openssl/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -625,6 +665,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "APN Changer/APN Changer-Prefix.pch";
 				INFOPLIST_FILE = "APN Changer/APN Changer-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/openssl/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
