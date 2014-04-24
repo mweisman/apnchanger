@@ -124,8 +124,9 @@
         APNChangerServer *server = [APNChangerServer sharedServer];
         [server startServer];
         int carrierID = rand();
-        NSURL *carrierURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/apns/%d.mobileconfig", server.port, carrierID]];
+        NSURL *carrierURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/apns/%d", server.port, carrierID]];
         [server serveXMLString:_selectedCarrier.carrierXML forCarrier:[NSString stringWithFormat:@"%d", carrierID]];
+        [server serveDownloaderForCarrier:_selectedCarrier.carrierName carrierId:[NSString stringWithFormat:@"%d", carrierID]];
         
         [[UIApplication sharedApplication] openURL:carrierURL];
     } else if (buttonIndex == 1) {
