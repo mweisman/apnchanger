@@ -54,4 +54,21 @@ RoutingHTTPServer *_webServer;
     }];
 }
 
+- (void) serveDownloaderForCarrier:(NSString *)carrierName carrierId:(NSString *)carrierID
+{
+    [_webServer handleMethod:@"GET" withPath:[NSString stringWithFormat:@"/apns/%@", carrierID] block:^(RouteRequest *request, RouteResponse *response) {
+        
+        NSString *html;
+        
+        NSError *templateReadError;
+        NSString *xmlLoc = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"template.html"];
+        NSString *templateHTML = [NSString stringWithContentsOfFile:xmlLoc encoding:NSUTF8StringEncoding error:&templateReadError];
+        
+        html = [templateHTML stringByReplacingOccurrencesOfString:@"$$CARRIER_NAME$$" withString:carrierName];
+        html = [html stringByReplacingOccurrencesOfString:@"$$ID$$" withString:carrierID];
+        html = [html stringByReplacingOccurrencesOfString:@"$$PORT$$" withString:[[self port] stringValue]];
+        [response respondWithString:html];
+    }];
+}
+
 @end

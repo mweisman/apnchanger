@@ -49,6 +49,7 @@
 		8B003BCF181324A40037CAB7 /* RoutingHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B003BC9181324A40037CAB7 /* RoutingHTTPServer.m */; };
 		8B2D149E19088A2600E047C4 /* cert.crt in Resources */ = {isa = PBXBuildFile; fileRef = 8B2D149C19088A2600E047C4 /* cert.crt */; };
 		8B2D149F19088A2600E047C4 /* key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8B2D149D19088A2600E047C4 /* key.pem */; };
+		8B2D14A1190894A400E047C4 /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 8B2D14A0190894A400E047C4 /* template.html */; };
 		8B5FCCA21813A76400BE8F5D /* APNChangerServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5FCCA11813A76400BE8F5D /* APNChangerServer.m */; };
 		8B5FCCA718145C0600BE8F5D /* template.mobileconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8B5FCCA618145C0600BE8F5D /* template.mobileconfig */; };
 		8B5FCCA918145FCF00BE8F5D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5FCCA818145FCF00BE8F5D /* CoreData.framework */; };
@@ -146,6 +147,7 @@
 		8B0DA5FF181397F400F1B07B /* APN Changer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "APN Changer.entitlements"; sourceTree = "<group>"; };
 		8B2D149C19088A2600E047C4 /* cert.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cert.crt; sourceTree = "<group>"; };
 		8B2D149D19088A2600E047C4 /* key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = key.pem; sourceTree = "<group>"; };
+		8B2D14A0190894A400E047C4 /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template.html; sourceTree = "<group>"; };
 		8B5FCCA01813A76400BE8F5D /* APNChangerServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNChangerServer.h; sourceTree = "<group>"; };
 		8B5FCCA11813A76400BE8F5D /* APNChangerServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNChangerServer.m; sourceTree = "<group>"; };
 		8B5FCCA618145C0600BE8F5D /* template.mobileconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = template.mobileconfig; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			children = (
 				8B61ECBA1908095100201CDF /* keys */,
 				8B5FCCA618145C0600BE8F5D /* template.mobileconfig */,
+				8B2D14A0190894A400E047C4 /* template.html */,
 				8B00392618131ABE0037CAB7 /* APN Changer-Info.plist */,
 				8B00392718131ABE0037CAB7 /* InfoPlist.strings */,
 				8B00392A18131ABE0037CAB7 /* main.m */,
@@ -472,6 +475,7 @@
 			files = (
 				8B2D149F19088A2600E047C4 /* key.pem in Resources */,
 				8B00393A18131ABE0037CAB7 /* Images.xcassets in Resources */,
+				8B2D14A1190894A400E047C4 /* template.html in Resources */,
 				8B00392918131ABE0037CAB7 /* InfoPlist.strings in Resources */,
 				8B00393218131ABE0037CAB7 /* Main.storyboard in Resources */,
 				8B5FCCA718145C0600BE8F5D /* template.mobileconfig in Resources */,

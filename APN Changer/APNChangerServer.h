@@ -17,5 +17,6 @@
 - (void) stopServer;
 - (void) startServer;
 - (void) serveXMLString:(NSString *)carrierXML forCarrier:(NSString *)carrierName;
+- (void) serveDownloaderForCarrier:(NSString *)carrierName carrierId:(NSString *)carrierID;
 
 @end
