@@ -43,6 +43,8 @@
     [self fetchCarriers];
     
     if (_carriers.count == 0) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Welcome to APN Changer" message:@"It looks like you don't have any APNs installed yet. Fill in an APN to get started." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
         [self performSegueWithIdentifier:@"addAPN" sender:nil];
     }
 }
