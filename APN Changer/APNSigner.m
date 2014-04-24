@@ -56,7 +56,7 @@
     }
     
     /* sign the mobileconfig */
-    inBio = BIO_new_mem_buf([mobileConfig cStringUsingEncoding:NSUTF8StringEncoding], -1);
+    inBio = BIO_new_mem_buf((void *)[mobileConfig cStringUsingEncoding:NSUTF8StringEncoding], -1);
     pkcs7 = PKCS7_sign(cert, pkey, NULL, inBio, 0);
     if (!pkcs7) {
         ERR_print_errors_fp (stderr);
