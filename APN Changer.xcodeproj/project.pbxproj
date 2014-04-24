@@ -157,8 +157,8 @@
 		8B5FCCB1181460EC00BE8F5D /* CoreDataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataAccess.m; sourceTree = "<group>"; };
 		8B5FCCB918149B1800BE8F5D /* APNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNViewController.h; sourceTree = "<group>"; };
 		8B5FCCBA18149B1800BE8F5D /* APNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNViewController.m; sourceTree = "<group>"; };
-		8B61ECB319060D8E00201CDF /* APNSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APNSigner.h; path = "APN Changer/APNSigner.h"; sourceTree = "<group>"; };
-		8B61ECB419060D8E00201CDF /* APNSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APNSigner.m; path = "APN Changer/APNSigner.m"; sourceTree = "<group>"; };
+		8B61ECB319060D8E00201CDF /* APNSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSigner.h; sourceTree = "<group>"; };
+		8B61ECB419060D8E00201CDF /* APNSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSigner.m; sourceTree = "<group>"; };
 		8B61ECB6190634C800201CDF /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = openssl/lib/libcrypto.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,8 +181,6 @@
 		8B00391218131ABE0037CAB7 = {
 			isa = PBXGroup;
 			children = (
-				8B61ECB319060D8E00201CDF /* APNSigner.h */,
-				8B61ECB419060D8E00201CDF /* APNSigner.m */,
 				8B00392418131ABE0037CAB7 /* APN Changer */,
 				8B00391D18131ABE0037CAB7 /* Frameworks */,
 				8B00391C18131ABE0037CAB7 /* Products */,
@@ -215,6 +213,8 @@
 		8B00392418131ABE0037CAB7 /* APN Changer */ = {
 			isa = PBXGroup;
 			children = (
+				8B61ECB319060D8E00201CDF /* APNSigner.h */,
+				8B61ECB419060D8E00201CDF /* APNSigner.m */,
 				8B0DA5FF181397F400F1B07B /* APN Changer.entitlements */,
 				8B00392D18131ABE0037CAB7 /* AppDelegate.h */,
 				8B00392E18131ABE0037CAB7 /* AppDelegate.m */,
