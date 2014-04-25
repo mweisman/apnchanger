@@ -136,7 +136,7 @@
         // Email
         MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
         picker.mailComposeDelegate = self;
-        picker.view.tintColor = [UIColor colorWithRed:0.263 green:0.600 blue:0.290 alpha:1.000];
+        picker.view.tintColor = [UIColor colorWithRed:0.050 green:0.398 blue:0.059 alpha:1.000];
         [picker setSubject:[NSString stringWithFormat:@"iPhone APN Settings for %@",_selectedCarrier.carrierName]];
         [picker addAttachmentData:[APNSigner signMobileconfig:_selectedCarrier.carrierXML] mimeType:@"application/x-apple-aspen-config" fileName:[NSString stringWithFormat:@"%@.mobileconfig", _selectedCarrier.carrierName]];
         NSString *emailBody = [NSString stringWithFormat:@"iPhone APN Settings for %@",_selectedCarrier.carrierName];
