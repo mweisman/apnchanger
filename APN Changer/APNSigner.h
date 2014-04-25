@@ -10,8 +10,6 @@
 #import <openssl/pem.h>
 #import <openssl/pkcs7.h>
 #import <openssl/err.h>
-#import <openssl/bio.h>
-#import <openssl/ssl.h>
 
 @interface APNSigner : NSObject
 
