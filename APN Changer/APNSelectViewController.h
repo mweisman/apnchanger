@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface APNSelectViewController : UITableViewController <UITableViewDataSource, UIActionSheetDelegate>
+@interface APNSelectViewController : UITableViewController <UITableViewDataSource, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 @end

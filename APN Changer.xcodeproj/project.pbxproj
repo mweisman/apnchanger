@@ -59,6 +59,7 @@
 		8B5FCCBB18149B1800BE8F5D /* APNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5FCCBA18149B1800BE8F5D /* APNViewController.m */; };
 		8B61ECB519060D8E00201CDF /* APNSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B61ECB419060D8E00201CDF /* APNSigner.m */; };
 		8B61ECB8190634C800201CDF /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B61ECB6190634C800201CDF /* libcrypto.a */; };
+		8BABE5F2190A030B004CD1D0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BABE5F1190A030B004CD1D0 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +163,7 @@
 		8B61ECB319060D8E00201CDF /* APNSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNSigner.h; sourceTree = "<group>"; };
 		8B61ECB419060D8E00201CDF /* APNSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNSigner.m; sourceTree = "<group>"; };
 		8B61ECB6190634C800201CDF /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = openssl/lib/libcrypto.a; sourceTree = "<group>"; };
+		8BABE5F1190A030B004CD1D0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BABE5F2190A030B004CD1D0 /* MessageUI.framework in Frameworks */,
 				8B5FCCA918145FCF00BE8F5D /* CoreData.framework in Frameworks */,
 				8B61ECB8190634C800201CDF /* libcrypto.a in Frameworks */,
 				8B00392118131ABE0037CAB7 /* CoreGraphics.framework in Frameworks */,
@@ -200,6 +203,7 @@
 		8B00391D18131ABE0037CAB7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8BABE5F1190A030B004CD1D0 /* MessageUI.framework */,
 				8B61ECB6190634C800201CDF /* libcrypto.a */,
 				8B5FCCA818145FCF00BE8F5D /* CoreData.framework */,
 				8B003BBD181324960037CAB7 /* RoutingHTTPServer */,

@@ -11,6 +11,7 @@
 #import "CoreDataAccess.h"
 #import "APNCarrier.h"
 #import "APNViewController.h"
+#import "APNSigner.h"
 
 @interface APNSelectViewController () {
     NSMutableArray *_carriers;
@@ -88,7 +89,7 @@
     selectedCell.selected = NO;
     _selectedCarrier = _carriers[indexPath.row];
     
-    UIActionSheet *whatToDoSheet = [[UIActionSheet alloc] initWithTitle:@"Open or Share APN Settings?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Install", @"Share", nil];
+    UIActionSheet *whatToDoSheet = [[UIActionSheet alloc] initWithTitle:@"Install or Email APN Settings?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Install", @"Email", nil];
     
     [whatToDoSheet showInView:self.view];
 }
@@ -132,14 +133,20 @@
         
         [[UIApplication sharedApplication] openURL:carrierURL];
     } else if (buttonIndex == 1) {
-        // Share
-        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[NSString stringWithFormat:@"%@ carrier settings",_selectedCarrier.carrierName], [self packageMobileConfigWithXML:_selectedCarrier.carrierXML forCarrier:_selectedCarrier.carrierName]] applicationActivities:nil];
-        activityVC.excludedActivityTypes = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter, UIActivityTypePostToWeibo, UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr, UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo, UIActivityTypeAirDrop];
-        [self presentViewController:activityVC animated:YES completion:nil];
+        // Email
+        MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+        picker.mailComposeDelegate = self;
+        picker.view.tintColor = [UIColor colorWithRed:0.263 green:0.600 blue:0.290 alpha:1.000];
+        [picker setSubject:[NSString stringWithFormat:@"iPhone APN Settings for %@",_selectedCarrier.carrierName]];
+        [picker addAttachmentData:[APNSigner signMobileconfig:_selectedCarrier.carrierXML] mimeType:@"application/x-apple-aspen-config" fileName:[NSString stringWithFormat:@"%@.mobileconfig", _selectedCarrier.carrierName]];
+        NSString *emailBody = [NSString stringWithFormat:@"iPhone APN Settings for %@",_selectedCarrier.carrierName];
+        [picker setMessageBody:emailBody isHTML:NO];
+        
+        [self presentViewController:picker animated:YES completion:nil];
     }
 }
 
-- (NSURL *)packageMobileConfigWithXML:(NSString *)carrierXML forCarrier:(NSString *)carrierName
+- (NSString *)packageMobileConfigWithXML:(NSString *)carrierXML forCarrier:(NSString *)carrierName
 {
     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
     NSString *filePath = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mobileconfig", carrierName]];
@@ -151,7 +158,12 @@
         return nil;
     }
     
-    return [NSURL fileURLWithPath:filePath];
+    return filePath;
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - navigation
