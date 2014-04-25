@@ -10,7 +10,11 @@
   <script type="text/javascript">
     window.onload = function(){
         location.href = "http://localhost:$$PORT$$/apns/$$ID$$.mobileconfig";
-        setTimeout(function(){location.href = "apnchanger://";}, 2000);
+        setTimeout(function(){
+            setTimeout(function(){
+                self.close();
+            }, 20);
+            location.href = "apnchanger://"}, 2000);
     };
   </script>
 </head>
