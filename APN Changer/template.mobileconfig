@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
     <dict>
+        <key>ConsentText</key>
+        <dict>
+            <key>default</key>
+            <string>Tapping "Install" will change your iPhone's APN to $$APN$$. Please ensure this is correct to avoid possible additional charges from $$CARRIERNAME$$.</string>
+        </dict>
         <key>PayloadContent</key>
         <array>
             <dict>
