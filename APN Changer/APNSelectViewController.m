@@ -89,7 +89,7 @@
     selectedCell.selected = NO;
     _selectedCarrier = _carriers[indexPath.row];
     
-    UIActionSheet *whatToDoSheet = [[UIActionSheet alloc] initWithTitle:@"Install or Email APN Settings?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Install", @"Email", nil];
+    UIActionSheet *whatToDoSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Install or Email %@ APN Settings?", _selectedCarrier.carrierName] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Install", @"Email", nil];
     
     [whatToDoSheet showInView:self.view];
 }
