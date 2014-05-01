@@ -159,7 +159,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="r35-lV-zd6" kind="push" id="7GA-6s-5lq"/>
+                                    <segue destination="r35-lV-zd6" kind="push" identifier="NewCarrierSegue" id="7GA-6s-5lq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -374,6 +374,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2Rd-gp-hNX"/>
+        <segue reference="7GA-6s-5lq"/>
     </inferredMetricsTieBreakers>
 </document>

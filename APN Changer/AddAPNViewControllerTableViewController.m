@@ -9,6 +9,7 @@
 #import "AddAPNViewControllerTableViewController.h"
 #import "APNCarrier.h"
 #import "CountryTableViewController.h"
+#import "APNViewController.h"
 
 static NSManagedObjectModel *managedObjectModel()
 {
@@ -220,6 +221,9 @@ static NSManagedObjectContext *managedObjectContext()
 
         CountryTableViewController *vc = [segue destinationViewController];
         vc.carriers = fetchedObjects;
+    } else if ([segue.identifier isEqualToString:@"NewCarrierSegue"]) {
+        APNViewController *vc = [segue destinationViewController];
+        vc.saveButton.title = @"Add";
     }
 }
 

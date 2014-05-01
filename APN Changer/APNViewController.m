@@ -75,7 +75,11 @@
 
 - (IBAction) cancel:(id)sender
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    if ([_saveButton.title isEqualToString:@"Add"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 #pragma mark - UITextFieldDelegate
