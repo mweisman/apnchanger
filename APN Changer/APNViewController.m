@@ -29,6 +29,15 @@
         _username.text = _carrier.apnUsername;
         _password.text = _carrier.apnPassword;
     }
+    
+    if ([_saveButton.title isEqualToString:@"Add"]) {
+        _saveButton.enabled = YES;
+        _carrierName.userInteractionEnabled = NO;
+        _carrierDescription.userInteractionEnabled = NO;
+        _apn.userInteractionEnabled = NO;
+        _username.userInteractionEnabled = NO;
+        _password.userInteractionEnabled = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +51,7 @@
     CoreDataAccess *cd = [CoreDataAccess sharedInstance];
     APNCarrier *carrierAPN;
     
-    if (!_carrier) {
+    if (!_carrier || [_saveButton.title isEqualToString:@"Add"]) {
         carrierAPN = [NSEntityDescription
                                   insertNewObjectForEntityForName:@"APNCarrier"
                                   inManagedObjectContext:cd.managedObjectContext];
