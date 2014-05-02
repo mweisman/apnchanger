@@ -37,6 +37,7 @@
         _apn.userInteractionEnabled = NO;
         _username.userInteractionEnabled = NO;
         _password.userInteractionEnabled = NO;
+        _password.secureTextEntry = NO;
     }
 }
 
