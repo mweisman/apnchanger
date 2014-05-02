@@ -156,14 +156,14 @@ static NSManagedObjectContext *managedObjectContext()
         NSString *code;
         if (indexPath.section == 0) {
             if (_countryCode) {
-                code = [_countryCode lowercaseString];
+                code = _countryCode;
             } else {
                 code = [[[NSLocale currentLocale] objectForKey:NSLocaleCountryCode] lowercaseString];
             }
         } else {
             code = _codes[indexPath.row];
         }
-        cell.imageView.image = [UIImage imageNamed:[code uppercaseString]];
+        cell.imageView.image = [UIImage imageNamed:[code lowercaseString]];
         cell.textLabel.text = _countries[code];
     }
     
@@ -176,7 +176,7 @@ static NSManagedObjectContext *managedObjectContext()
     
     CLGeocoder *g = [[CLGeocoder alloc] init];
     [g reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error){
-        _countryCode = [[placemarks firstObject] ISOcountryCode];
+        _countryCode = [[[placemarks firstObject] ISOcountryCode] lowercaseString];
         [self.tableView reloadData];
     }];
 }
@@ -193,9 +193,9 @@ static NSManagedObjectContext *managedObjectContext()
         NSString *code;
         if (indexPath.section == 0) {
             if (_countryCode) {
-                code = [_countryCode lowercaseString];
+                code = _countryCode;
             } else {
-                code = [[[NSLocale currentLocale] objectForKey:NSLocaleCountryCode] lowercaseString];
+                code = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
             }
         } else {
             code = _codes[indexPath.row];
