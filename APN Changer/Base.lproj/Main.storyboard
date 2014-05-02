@@ -170,7 +170,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Carrier" id="lVc-Jx-fBi">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="Xe0-Jd-R92">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Xe0-Jd-R92">
                             <connections>
                                 <action selector="closeModal:" destination="f9P-Ql-Eko" id="BMb-p9-L0V"/>
                             </connections>
